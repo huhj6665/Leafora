@@ -1,0 +1,12 @@
+.result-page { padding-top: 42rpx; }
+.badge { display: inline-block; padding: 8rpx 18rpx; border-radius: 999rpx; background: #eff6ff; color: #2563eb; font-size: 23rpx; }
+.title { font-size: 36rpx; font-weight: 700; margin: 24rpx 0; }
+.row { display: flex; justify-content: space-between; gap: 20rpx; padding: 22rpx 0; border-bottom: 2rpx solid #f1f5f9; color: #64748b; }
+.value { color: #0f172a; text-align: right; word-break: break-all; }
+.status { margin-top: 28rpx; padding: 22rpx; border-radius: 12rpx; background: #eff6ff; color: #1d4ed8; }
+.status-success { background: #ecfdf5; color: #047857; }
+.status-expired, .status-consumed, .status-bound_other, .status-server_error { background: #fef2f2; color: #b91c1c; }
+.status-cancelled { background: #f1f5f9; color: #475569; }
+.security { color: #94a3b8; font-size: 23rpx; line-height: 1.6; margin-top: 22rpx; }
+.actions { display: flex; gap: 20rpx; margin-top: 24rpx; }
+.actions button { flex: 1; }

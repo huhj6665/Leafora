@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="error-box" wx:if="{{errorMsg}}">{{errorMsg}}</view>
+  <view class="card" wx:if="{{device}}">
+    <view class="head"><text class="title">{{device.device_name || device.device_id}}</text><text class="badge">{{device.communication_status || 'UNKNOWN'}}</text></view>
+    <view class="row"><text>设备编号</text><text>{{device.device_id}}</text></view>
+    <view class="row"><text>运行状态</text><text>{{device.operating_status || '--'}}</text></view>
+    <view class="row"><text>启动状态</text><text>{{device.status_label}} {{device.unavailable_reason}}</text></view>
+    <view class="row" wx:for="{{preflight.checks}}" wx:key="key" wx:if="{{item.key==='gps'||item.key==='camera'||item.key==='inference'}}"><text>{{item.label}}</text><text>{{item.value}}</text></view>
+    <view class="warning">{{preflight.rtk_hint}}</view>
+    <view class="row"><text>网络状态</text><text>{{device.network_status || '--'}}</text></view>
+    <view class="row"><text>CPU 温度</text><text>{{device.cpu_temperature == null ? '--' : device.cpu_temperature + '℃'}}</text></view>
+    <view class="row"><text>CPU / 内存 / 存储</text><text>{{device.cpu_usage == null ? '--' : device.cpu_usage + '%'}} / {{device.memory_usage == null ? '--' : device.memory_usage + '%'}} / {{device.storage_usage == null ? '--' : device.storage_usage + '%'}}</text></view>
+    <view class="row"><text>最近在线</text><text>{{device.last_seen_at || '--'}}</text></view>
+  </view>
+
+  <view class="section-title">当前巡检</view>
+  <view class="card event" wx:for="{{current}}" wx:key="inspection_id" data-id="{{item.inspection_id}}" bindtap="openInspection"><text>{{item.name}}</text><text class="meta">{{item.status_label}} · {{item.display_time}}</text></view>
+  <view class="empty small" wx:if="{{device && current.length === 0}}">当前没有进行中的巡检</view>
+
+  <view class="section-title head"><text>最近巡检</text><text class="link" bindtap="viewAll">查看全部</text></view>
+  <view class="card event" wx:for="{{recent}}" wx:key="inspection_id" data-id="{{item.inspection_id}}" bindtap="openInspection"><text>{{item.name}}</text><text class="meta">{{item.status_label}} · 目标 {{item.target_count || 0}}</text></view>
+  <button class="danger-btn" wx:if="{{device}}" loading="{{unbinding}}" bindtap="unbind">解绑设备</button>
+  <view class="warning" wx:if="{{device}}">解绑不会删除历史巡检；重新绑定需扫描 Jetson 新生成的动态二维码。</view>
+</view>

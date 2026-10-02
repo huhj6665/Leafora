@@ -1,0 +1,36 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# ---- Virtual Environment ----
+.venv/
+venv/
+env/
+
+# ---- Environment (含敏感信息，禁止提交) ----
+.env
+.env.*
+!.env.example
+
+# ---- Testing / Coverage ----
+.pytest_cache/
+.coverage
+htmlcov/
+*.db
+test_*.db
+
+# ---- 图片存储（本地文件系统，开发上传产物，禁止提交）----
+storage/
+
+# ---- IDE ----
+.idea/
+.vscode/
+*.swp
+
+# ---- OS ----
+.DS_Store
+Thumbs.db

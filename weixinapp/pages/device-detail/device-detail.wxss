@@ -1,0 +1,11 @@
+.head { display: flex; align-items: center; justify-content: space-between; }
+.title { font-size: 36rpx; font-weight: 700; }
+.badge { padding: 6rpx 14rpx; background: #f1f5f9; border-radius: 999rpx; font-size: 22rpx; }
+.row { display: flex; justify-content: space-between; gap: 24rpx; padding: 20rpx 0; border-bottom: 2rpx solid #f1f5f9; color: #64748b; }
+.row text:last-child { color: #0f172a; text-align: right; max-width: 65%; }
+.section-title { margin: 34rpx 4rpx 18rpx; font-weight: 650; font-size: 31rpx; }
+.event { display: flex; flex-direction: column; }
+.meta { color: #94a3b8; font-size: 24rpx; margin-top: 10rpx; }
+.small { padding: 30rpx; }
+.link { color: #2563eb; font-size: 25rpx; font-weight: 400; }
+.warning { color: #92400e; font-size: 23rpx; line-height: 1.6; margin: 18rpx 4rpx; }

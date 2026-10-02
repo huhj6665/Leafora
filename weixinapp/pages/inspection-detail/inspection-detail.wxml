@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="error-box" wx:if="{{errorMsg}}">{{errorMsg}}</view>
+  <block wx:if="{{detail}}">
+    <view class="card"><view class="head"><text class="title">{{detail.name}}</text><text class="status">{{detail.status_label}}</text></view><view class="demo-tag" wx:if="{{detail.is_simulated}}">演示 / 模拟数据，不代表真实 RTK 精度</view><view class="row"><text>巡检 ID</text><text>{{detail.inspection_id}}</text></view><view class="row"><text>烟田</text><text>{{detail.field_name || detail.field_id || '--'}} · v{{detail.field_version || '--'}}</text></view><view class="row"><text>设备</text><text>{{detail.device_id}}</text></view><view class="row"><text>开始 / 结束</text><text>{{detail.started_at || '--'}} / {{detail.ended_at || '--'}}</text></view><view class="row"><text>同步状态</text><text>{{detail.status === 'SYNCING' ? '同步中' : '当前云端数据'}}</text></view><view class="failure" wx:if="{{detail.failure_reason}}">{{detail.failure_reason}}</view></view>
+
+    <view class="disclaimer">{{detail.source_label}} · {{detail.calibration_hint}}</view>
+    <view class="failure" wx:if="{{detail.sync_warning}}">{{detail.sync_warning}}</view>
+    <view class="section-title">烟田空间结果</view>
+    <view class="spatial" wx:if="{{detail.background_local}}"><image src="{{detail.background_local}}" mode="aspectFill"/><view class="grid-cell" wx:for="{{detail.risk_grid}}" wx:key="index" style="left:{{item.x_pct}}%;top:{{item.y_pct}}%;width:{{item.width_pct}}%;height:{{item.height_pct}}%;background:{{item.risk_color}}" data-index="{{index}}" bindtap="showGrid"></view><view class="track-point" wx:for="{{detail.track}}" wx:key="index" style="left:{{item.x_pct}}%;top:{{item.y_pct}}%"></view><view class="disease-point" wx:for="{{detail.disease_points}}" wx:key="index" style="left:{{item.x_pct}}%;top:{{item.y_pct}}%"></view></view>
+    <view class="empty small" wx:else>暂无烟田底图或空间坐标；不会使用通用地图代替。</view>
+
+    <view class="section-title">环境数据</view>
+    <view class="card" wx:if="{{detail.latest_environment}}"><view class="metrics"><view><text class="num">{{detail.latest_environment.temperature_text}}</text><text>℃ 温度</text></view><view><text class="num">{{detail.latest_environment.humidity_text}}</text><text>% 湿度</text></view><view><text class="num">{{detail.latest_environment.co2_text}}</text><text>ppm CO₂</text></view><view><text class="num">{{detail.latest_environment.light_text}}</text><text>光照</text></view></view><text class="sample-time">最近采样：{{detail.latest_environment.time || detail.latest_environment.sampled_at || '--'}} · 共 {{detail.environment.length}} 个环境点</text></view>
+    <view class="empty small" wx:else>暂无有效数据</view>
+
+    <view class="section-title">检测与同步</view>
+    <view class="card"><view class="row"><text>目标数量</text><text>{{detail.risk.target_count || 0}}</text></view><view class="row"><text>风险等级</text><text>{{detail.risk.level || '--'}}（{{detail.risk.score || 0}}）</text></view><view class="row"><text>轨迹点</text><text>{{detail.track_count}}</text></view><view class="row"><text>图片</text><text>{{detail.images.length}}</text></view><text class="disclaimer" wx:if="{{detail.risk.disclaimer}}">{{detail.risk.disclaimer}}</text></view>
+
+    <view class="section-title">图片与识别结果</view>
+    <view class="empty small" wx:if="{{detail.images.length === 0}}">暂无图片</view>
+    <view class="card image-card" wx:for="{{detail.images}}" wx:key="image_id">
+      <image wx:if="{{item.local_path}}" src="{{item.local_path}}" mode="aspectFill" data-path="{{item.local_path}}" bindtap="preview" />
+      <view class="image-placeholder" wx:elif="{{item.load_error}}">{{item.load_error}}</view>
+      <view class="image-placeholder" wx:else>图片加载中…</view>
+      <view class="image-meta"><text>{{item.captured_at || '--'}}</text><text>云端识别：{{item.cloud_status}}</text></view>
+      <view class="target" wx:for="{{item.results}}" wx:key="index" wx:for-item="target"><text>{{target.class_name}}</text><text>{{target.confidence_text}}</text></view>
+      <view class="muted no-target" wx:if="{{item.results.length === 0}}">暂无已完成的云端检测结果</view>
+    </view>
+  </block>
+  <view class="empty" wx:if="{{loading}}">正在加载巡检详情…</view>
+</view>

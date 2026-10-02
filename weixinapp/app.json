@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/network/network",
+    "pages/index/index",
+    "pages/fields/fields",
+    "pages/mission/mission",
+    "pages/inspections/inspections",
+    "pages/profile/profile",
+    "pages/field-detail/field-detail",
+    "pages/field-create/field-create",
+    "pages/mission-status/mission-status",
+    "pages/login/login",
+    "pages/scan-result/scan-result",
+    "pages/password/password",
+    "pages/devices/devices",
+    "pages/device-detail/device-detail",
+    "pages/inspection-detail/inspection-detail",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "Leafora",
+    "navigationBarBackgroundColor": "#173E32",
+    "backgroundColor": "#F4F6F1",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#78847D",
+    "selectedColor": "#226B4B",
+    "backgroundColor": "#FFFDF8",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页" },
+      { "pagePath": "pages/fields/fields", "text": "烟田" },
+      { "pagePath": "pages/mission/mission", "text": "巡检" },
+      { "pagePath": "pages/inspections/inspections", "text": "记录" },
+      { "pagePath": "pages/profile/profile", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,15 @@
+<view class="login-page">
+  <view class="brand"><text class="brand-title">手机号登录</text><text class="brand-sub">首次验证码登录会自动创建同一云端账号</text></view>
+  <view class="tabs">
+    <view class="tab {{tab === 'code' ? 'active' : ''}}" data-tab="code" bindtap="switchTab">验证码</view>
+    <view class="tab {{tab === 'password' ? 'active' : ''}}" data-tab="password" bindtap="switchTab">密码</view>
+  </view>
+  <view class="form">
+    <view class="field"><text>手机号</text><input type="number" maxlength="11" placeholder="11 位手机号" value="{{phone}}" bindinput="onPhoneInput" /></view>
+    <view class="field" wx:if="{{tab === 'code'}}"><text>验证码</text><input type="number" maxlength="6" placeholder="6 位验证码" value="{{code}}" bindinput="onCodeInput" /><button size="mini" disabled="{{sending || countdown > 0}}" bindtap="sendCode">{{countdown ? countdown + 's' : '获取验证码'}}</button></view>
+    <view class="field" wx:else><text>密码</text><input password placeholder="包含字母和数字" value="{{password}}" bindinput="onPasswordInput" /></view>
+    <button wx:if="{{tab === 'code'}}" class="primary-btn submit" loading="{{loading}}" disabled="{{loading}}" bindtap="loginByCode">登录</button>
+    <button wx:else class="primary-btn submit" loading="{{loading}}" disabled="{{loading}}" bindtap="loginByPassword">登录</button>
+    <view class="error-box" wx:if="{{errorMsg}}">{{errorMsg}}</view>
+  </view>
+</view>

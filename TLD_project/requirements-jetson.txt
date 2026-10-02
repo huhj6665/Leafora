@@ -1,0 +1,10 @@
+# JetPack 自带 numpy/OpenCV；TensorRT 和 pycuda 使用 NVIDIA 系统安装版本。
+paho-mqtt==1.6.1
+qrcode[pil]==7.3.1
+Pillow==8.4.0
+pyserial==3.5
+pynmea2==1.19.0
+smbus2==0.4.2
+
+# 仅用于无硬件测试，Python 3.6 最后兼容系列。
+pytest==6.2.5

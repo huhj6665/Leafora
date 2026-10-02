@@ -1,0 +1,55 @@
+# ============================================================
+# TLD Intelligent Inspection Platform - Backend Dependencies
+# Python 3.10+
+# ============================================================
+
+# ---- Web Framework ----
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# ---- Database ORM (SQLAlchemy 2.0) ----
+# asyncpg for PostgreSQL; aiosqlite for local tests
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+aiosqlite==0.20.0
+
+# ---- Database Migration ----
+alembic==1.14.0
+
+# ---- Data Validation ----
+pydantic==2.10.4
+pydantic-settings==2.7.0
+
+# ---- Security (JWT + bcrypt/passlib) ----
+# NOTE: bcrypt must be pinned to 4.0.x.
+# passlib 1.7.4 depends on bcrypt.__about__, removed in bcrypt 4.1.0.
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+PyJWT==2.10.1
+
+# ---- Environment / Misc ----
+python-dotenv==1.0.1
+email-validator==2.2.0
+python-multipart==0.0.20
+
+# ---- MQTT ----
+# 用于 MQTT Consumer 与模拟 Jetson 发布器（需联网安装）
+paho-mqtt==2.1.0
+
+# ---- Aliyun 号码认证服务（短信认证 SDK）----
+# 用于 SendSmsVerifyCode / CheckSmsVerifyCode。
+# 注意：真实发送前需先安装该 SDK，并配置 ALIYUN_ACCESS_KEY_ID / SECRET。
+alibabacloud_dypnsapi20170525
+
+# ---- Testing ----
+pytest==8.3.4
+pytest-asyncio==0.25.0
+httpx==0.28.1
+
+# ---- Leafora assistant: private document parsing and Chinese retrieval ----
+pypdf==6.19.0
+python-docx==1.2.0
+jieba==0.42.1
+rank-bm25==0.2.2
+Pillow==12.3.0
+cryptography==50.0.1

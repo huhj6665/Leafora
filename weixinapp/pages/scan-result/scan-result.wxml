@@ -1,0 +1,23 @@
+<view class="page result-page">
+  <view class="card" wx:if="{{ready && ok}}">
+    <view class="badge badge-{{state}}">{{kind === 'device_pairing' ? 'Jetson 设备配对' : 'Web 快速登录'}}</view>
+    <view class="title">{{title}}</view>
+    <view class="row" wx:if="{{kind === 'device_pairing'}}"><text>设备编号</text><text class="value">{{deviceId}}</text></view>
+    <view class="row"><text>会话标识</text><text class="value">{{sessionIdMasked}}</text></view>
+    <view class="row"><text>协议版本</text><text class="value">{{version}}</text></view>
+    <view class="row"><text>有效期至</text><text class="value">{{expiresAt}}</text></view>
+    <view class="status status-{{state}}">{{statusText}}</view>
+    <view class="security">一次性 Token 已隐藏且仅短时保存在内存。确认操作以云端校验结果为准。</view>
+  </view>
+
+  <view class="card" wx:if="{{ready && !ok}}"><view class="title">无法处理二维码</view><view class="error-box">{{error}}</view></view>
+
+  <view class="actions" wx:if="{{ready && ok && state === 'format_valid'}}">
+    <button class="primary-btn" loading="{{confirming}}" bindtap="confirm">{{kind === 'device_pairing' ? '确认绑定' : '确认 Web 登录'}}</button>
+    <button class="secondary-btn" bindtap="cancelRequest">取消</button>
+  </view>
+  <view class="actions" wx:if="{{retryable}}"><button class="primary-btn" bindtap="confirm">重试确认</button></view>
+  <view class="actions" wx:if="{{state === 'success' && kind === 'device_pairing'}}"><button class="primary-btn" bindtap="goDevices">查看设备列表</button></view>
+  <view class="actions" wx:if="{{state === 'success' && kind === 'web_login'}}"><button class="primary-btn" bindtap="goHome">完成</button></view>
+  <view class="actions" wx:if="{{state === 'expired' || state === 'consumed' || state === 'cancelled' || !ok}}"><button class="secondary-btn" bindtap="rescan">重新扫码</button><button class="secondary-btn" bindtap="goHome">返回首页</button></view>
+</view>

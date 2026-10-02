@@ -1,0 +1,30 @@
+<view class="network-page">
+  <view class="brand-orb"><text class="leaf">L</text></view>
+  <text class="eyebrow">LEAFORA · LOCAL LINK</text>
+  <text class="page-title">连接本地服务</text>
+  <text class="lead">手机与电脑连接同一 Wi-Fi 或手机热点，填写电脑当前的局域网 IPv4。</text>
+  <text class="lead">这是云端电脑的地址，不是手机网关或 Jetson 的地址；小程序仅通过 HTTP 访问云端。</text>
+
+  <view class="connect-card">
+    <text class="field-label">电脑局域网 IPv4</text>
+    <input class="host-input" value="{{host}}" placeholder="例如 192.168.1.10" bindinput="onHostInput" />
+    <view class="advanced-link" bindtap="toggleAdvanced">{{advanced ? '收起高级设置' : '高级设置 · 端口 ' + port}}</view>
+    <view wx:if="{{advanced}}">
+      <text class="field-label port-label">HTTP 端口</text>
+      <input class="port-input" type="number" value="{{port}}" placeholder="8000" bindinput="onPortInput" />
+    </view>
+    <view class="preview"><text class="preview-label">API 地址</text><text class="preview-url">{{previewUrl || '等待有效地址'}}</text></view>
+    <view class="error-box" wx:if="{{validationError}}">{{validationError}}</view>
+    <button class="primary-btn detect" loading="{{testing}}" disabled="{{testing}}" bindtap="detectConnection">检测连接</button>
+  </view>
+
+  <view class="status status-{{state}}">
+    <view class="status-dot"></view>
+    <view class="status-copy"><text class="status-title">{{title}}</text><text class="status-message">{{message}}</text></view>
+  </view>
+  <view class="health-grid" wx:if="{{health}}"><view><text>服务</text><text class="strong">{{health.status || '--'}}</text></view><view><text>数据库</text><text class="strong">{{health.database || '--'}}</text></view></view>
+
+  <button class="enter-btn" disabled="{{!canEnter}}" bindtap="enterLeafora">进入 Leafora</button>
+  <view class="small-actions" wx:if="{{mode === 'settings'}}"><text bindtap="copyUrl">复制检测地址</text><text bindtap="clearLocalConfig">清除配置</text></view>
+  <view class="tips"><text>连接失败？</text><text>确认 IP/端口正确、后端已启动并监听局域网地址，且防火墙未阻止访问。</text></view>
+</view>

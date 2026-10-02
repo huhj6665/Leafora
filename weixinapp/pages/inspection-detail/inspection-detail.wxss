@@ -1,0 +1,22 @@
+.head { display: flex; justify-content: space-between; gap: 20rpx; align-items: flex-start; }
+.title { font-size: 35rpx; font-weight: 700; }.status { color: #2563eb; }
+.row { display: flex; justify-content: space-between; gap: 24rpx; padding: 20rpx 0; border-bottom: 2rpx solid #f1f5f9; color: #64748b; }
+.row text:last-child { color: #0f172a; text-align: right; max-width: 68%; word-break: break-all; }
+.failure { color: #b91c1c; background: #fef2f2; padding: 18rpx; margin-top: 20rpx; border-radius: 10rpx; }
+.section-title { font-size: 31rpx; font-weight: 650; margin: 34rpx 4rpx 18rpx; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 26rpx; }
+.metrics view { display: flex; flex-direction: column; color: #64748b; font-size: 23rpx; }
+.num { font-size: 38rpx; color: #0f172a; font-weight: 650; }
+.sample-time, .disclaimer { display: block; color: #94a3b8; font-size: 22rpx; line-height: 1.6; margin-top: 24rpx; }
+.small { padding: 30rpx; }
+.image-card image, .image-placeholder { width: 100%; height: 360rpx; border-radius: 12rpx; background: #f1f5f9; }
+.image-placeholder { display: flex; align-items: center; justify-content: center; color: #94a3b8; }
+.image-meta { display: flex; justify-content: space-between; gap: 16rpx; color: #64748b; font-size: 22rpx; margin-top: 18rpx; }
+.target { display: flex; justify-content: space-between; padding: 14rpx 0; border-bottom: 2rpx solid #f1f5f9; }
+.no-target { margin-top: 18rpx; font-size: 23rpx; }
+.demo-tag { margin: 18rpx 0 4rpx; padding: 14rpx 16rpx; border-radius: 12rpx; background: #fff2d8; color: #825f25; font-size: 22rpx; }
+.spatial { position: relative; overflow: hidden; height: 460rpx; border-radius: 24rpx; background: #dce7dd; }
+.spatial image { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; }
+.grid-cell { position: absolute; opacity: .48; border: 1rpx solid rgba(255,255,255,.75); }
+.track-point { position: absolute; width: 8rpx; height: 8rpx; margin: -4rpx; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4rpx #2f7d59; }
+.disease-point { position: absolute; width: 18rpx; height: 18rpx; margin: -9rpx; border-radius: 50%; background: #c94b45; border: 3rpx solid #fff; }

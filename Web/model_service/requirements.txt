@@ -1,0 +1,16 @@
+# RT-DETR-L 模型服务依赖（Python 3.10+）
+# 说明：ultralytics 会拉取 torch / opencv-python 等较重依赖，请单独建立虚拟环境安装。
+
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+pydantic==2.10.4
+pydantic-settings==2.7.0
+
+# 目标检测框架（RT-DETR）。安装会带入 torch/torchvision。
+# 如为 CUDA 环境，可先装对应 torch 版本再装 ultralytics。
+ultralytics>=8.3.0
+
+# 图像解码/编码（ultralytics 已依赖 opencv，此处显式声明便于明确）
+opencv-python>=4.9.0
+numpy>=1.24

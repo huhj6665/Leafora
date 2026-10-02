@@ -1,0 +1,14 @@
+<view class="page tab-page">
+  <view class="tabs"><view class="tab {{tab === 'current' ? 'active' : ''}}" data-tab="current" bindtap="switchTab">当前巡检 ({{current.length}})</view><view class="tab {{tab === 'history' ? 'active' : ''}}" data-tab="history" bindtap="switchTab">历史巡检 ({{history.length}})</view></view>
+  <view class="filters"><picker mode="selector" range="{{fieldOptions}}" range-key="label" value="{{fieldIndex}}" data-key="fieldIndex" bindchange="onFilter"><view>{{fieldOptions[fieldIndex].label}}⌄</view></picker><picker mode="selector" range="{{deviceOptions}}" range-key="label" value="{{deviceIndex}}" data-key="deviceIndex" bindchange="onFilter"><view>{{deviceOptions[deviceIndex].label}}⌄</view></picker><picker mode="selector" range="{{statusOptions}}" range-key="label" value="{{statusIndex}}" data-key="statusIndex" bindchange="onFilter"><view>{{statusOptions[statusIndex].label}}⌄</view></picker><picker mode="date" value="{{dateFrom}}" bindchange="onDate"><view>{{dateFrom || '开始日期'}}⌄</view></picker><text bindtap="clearFilters">清除</text></view>
+  <view class="error-box" wx:if="{{errorMsg}}">{{errorMsg}}</view>
+  <block wx:if="{{tab === 'current'}}">
+    <view class="empty" wx:if="{{!loading && current.length === 0}}">暂无进行中的巡检，可从“巡检”页选择烟田和设备开始。</view>
+    <view class="card item" wx:for="{{current}}" wx:key="inspection_id" data-id="{{item.inspection_id}}" bindtap="open"><view class="head"><text class="name">{{item.name}}</text><text class="status current">{{item.status_label}}</text></view><text class="meta">{{item.field_name || item.field_id || '未关联烟田'}} · {{item.device_id}} · {{item.display_time}}</text><view class="counts"><text>采样 {{item.sample_count || 0}}</text><text>目标 {{item.target_count || 0}}</text><text>{{item.sync_label}}</text></view></view>
+  </block>
+  <block wx:else>
+    <view class="empty" wx:if="{{!loading && history.length === 0}}">暂无历史巡检</view>
+    <view class="card item" wx:for="{{history}}" wx:key="inspection_id" data-id="{{item.inspection_id}}" bindtap="open"><view class="head"><text class="name">{{item.name}}</text><text class="status">{{item.status_label}}</text></view><text class="meta">{{item.field_name || item.field_id || '未关联烟田'}} · {{item.device_id}} · {{item.display_time}}</text><view class="counts"><text>采样 {{item.sample_count || 0}}</text><text>图片 {{item.image_count || 0}}</text><text>目标 {{item.target_count || 0}}</text></view></view>
+  </block>
+  <view class="loading" wx:if="{{loading}}">正在加载巡检…</view>
+</view>

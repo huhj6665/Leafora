@@ -1,0 +1,13 @@
+.login-page { padding: 52rpx 40rpx; }
+.brand { display: flex; flex-direction: column; margin-bottom: 44rpx; }
+.brand-title { font-size: 44rpx; font-weight: 700; }
+.brand-sub { color: #94a3b8; margin-top: 12rpx; }
+.tabs { display: flex; border-bottom: 2rpx solid #e2e8f0; }
+.tab { flex: 1; text-align: center; padding: 22rpx; color: #64748b; border-bottom: 4rpx solid transparent; }
+.active { color: #2563eb; font-weight: 600; border-color: #2563eb; }
+.form { margin-top: 28rpx; }
+.field { min-height: 92rpx; display: flex; align-items: center; border-bottom: 2rpx solid #e2e8f0; gap: 20rpx; }
+.field > text { width: 120rpx; }
+.field input { flex: 1; }
+.field button { margin: 0; color: #2563eb; background: #eff6ff; font-size: 24rpx; }
+.submit { margin-top: 48rpx; }

@@ -1,0 +1,23 @@
+page { background: radial-gradient(circle at 90% 5%, #DCEBDD 0, #F4F6F1 34%, #F4F6F1 100%); }
+.network-page { min-height: 100vh; box-sizing: border-box; padding: 74rpx 40rpx calc(44rpx + env(safe-area-inset-bottom)); }
+.brand-orb { display: flex; align-items: center; justify-content: center; width: 82rpx; height: 82rpx; margin-bottom: 28rpx; border-radius: 26rpx 26rpx 26rpx 8rpx; background: #205E43; box-shadow: 0 16rpx 34rpx rgba(32,94,67,.22); }
+.leaf { color: #F6EBCB; font-size: 43rpx; font-weight: 800; font-style: italic; }
+.lead { display: block; max-width: 610rpx; margin-top: 16rpx; color: #697970; font-size: 25rpx; line-height: 1.7; }
+.connect-card { margin-top: 42rpx; padding: 30rpx; border: 1rpx solid rgba(35,91,65,.09); border-radius: 28rpx; background: rgba(255,253,249,.95); box-shadow: 0 18rpx 46rpx rgba(43,76,58,.1); }
+.field-label { display: block; margin-bottom: 12rpx; color: #446255; font-size: 23rpx; font-weight: 650; }
+.host-input, .port-input { height: 92rpx; box-sizing: border-box; padding: 0 24rpx; border: 2rpx solid #C7D8CE; border-radius: 18rpx; background: #F8FAF6; color: #173E32; font-size: 31rpx; }
+.advanced-link { padding: 22rpx 2rpx 10rpx; color: #347356; font-size: 23rpx; }
+.port-label { margin-top: 14rpx; }.port-input { width: 240rpx; }
+.preview { margin: 24rpx 0; padding: 18rpx 20rpx; border-radius: 16rpx; background: #EDF4ED; }
+.preview-label, .preview-url { display: block; }.preview-label { color: #789083; font-size: 20rpx; }.preview-url { margin-top: 5rpx; color: #255C44; font-size: 23rpx; word-break: break-all; }
+.detect { margin-top: 12rpx; }
+.status { display: flex; align-items: flex-start; margin-top: 24rpx; padding: 22rpx 24rpx; border-radius: 20rpx; background: #E9EEEA; }
+.status-dot { flex: 0 0 auto; width: 16rpx; height: 16rpx; margin: 11rpx 18rpx 0 0; border-radius: 50%; background: #95A099; }
+.status-copy, .status-title, .status-message { display: block; }.status-title { font-weight: 700; }.status-message { margin-top: 5rpx; color: #6D7B73; font-size: 23rpx; line-height: 1.5; }
+.status-success { background: #E4F2E7; }.status-success .status-dot { background: #2F8A58; }.status-success .status-title { color: #216945; }
+.status-failed, .status-invalid, .status-service_error { background: #FFF0ED; }.status-failed .status-dot, .status-invalid .status-dot { background: #C64E45; }
+.status-testing { background: #EDF3E8; }.status-testing .status-dot { background: #C59A3E; }
+.health-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16rpx; margin-top: 16rpx; }.health-grid view { padding: 18rpx; border-radius: 16rpx; background: #FFFDF9; }.health-grid text { display: block; color: #8A978F; font-size: 21rpx; }.health-grid .strong { margin-top: 5rpx; color: #245D45; font-weight: 700; }
+.enter-btn { margin-top: 28rpx; border-radius: 999rpx; background: #1F6347; color: #fff; font-weight: 700; }.enter-btn[disabled] { background: #CBD4CE; color: #F1F4F2; }
+.small-actions { display: flex; justify-content: center; gap: 46rpx; margin-top: 22rpx; color: #4E7964; font-size: 23rpx; }
+.tips { margin-top: 34rpx; padding: 22rpx; border-top: 1rpx solid #DCE4DE; color: #7C8981; font-size: 22rpx; line-height: 1.65; }.tips text { display: block; }.tips text:first-child { color: #415E51; font-weight: 700; }

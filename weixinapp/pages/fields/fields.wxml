@@ -1,0 +1,14 @@
+<view class="page tab-page">
+  <view class="head"><view><text class="eyebrow">FIELDS</text><text class="page-title">我的烟田</text></view><button class="create" size="mini" bindtap="createField">＋ 新建</button></view>
+  <text class="intro">烟田归属账号，每次巡检再选择本次使用的设备。</text>
+  <view class="error-box" wx:if="{{errorMsg}}">{{errorMsg}}</view>
+  <view class="skeleton" wx:if="{{loading}}"></view>
+  <view class="empty" wx:if="{{!loading && !errorMsg && fields.length === 0}}">还没有烟田。当前闭环需要云端预置“演示烟田 A-01”。</view>
+  <view class="field-card" wx:for="{{fields}}" wx:key="field_id" data-id="{{item.field_id}}" bindtap="openField">
+    <image wx:if="{{item.display_image}}" class="cover" src="{{item.display_image}}" mode="aspectFill" />
+    <view wx:else class="cover placeholder"><text>LEAFORA</text><text>烟田底图待加载</text></view>
+    <view class="shade"></view>
+    <view class="field-copy"><view class="badges"><text class="pill">{{item.status_label}}</text><text class="pill simulated" wx:if="{{item.is_simulated}}">演示 · 模拟</text></view><text class="name">{{item.display_name}}</text><text class="meta">{{item.calibration_label}} · {{item.last_inspection_at || '暂无巡检'}}</text></view>
+    <view class="risk"><text>风险摘要</text><text class="strong">{{item.risk_summary || '暂无数据'}}</text></view>
+  </view>
+</view>

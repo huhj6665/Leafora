@@ -1,0 +1,12 @@
+<view class="home tab-page">
+  <view class="top"><view><text class="eyebrow">LEAFORA FIELD OPS</text><text class="greeting">{{isLoggedIn ? '你好，' + (user.nickname || '巡检员') : '让每一片烟田可见'}}</text><text class="date">现场巡检 · 云端协同</text></view><view class="connection"><view class="dot"></view><text>本地服务</text></view></view>
+  <view class="login-card" wx:if="{{!isLoggedIn}}"><text>手机号登录后绑定设备、选择烟田并开始巡检。</text><button class="primary-btn" bindtap="goLogin">登录 Leafora</button></view>
+  <block wx:else>
+    <view class="active-card" wx:if="{{active}}" bindtap="openActive"><view class="active-head"><text>进行中的巡检</text><text>{{active.status_label}} ›</text></view><text class="active-name">{{active.field_name || active.name || '烟田巡检'}}</text><text class="active-meta">{{active.device_id}} · 进度 {{active.progress_percent}}%</text><view class="bar"><view style="width:{{active.progress_percent}}%"></view></view></view>
+    <view class="hero" wx:else bindtap="goMission"><text class="hero-kicker">READY FOR FIELD</text><text class="hero-title">开始一次烟田巡检</text><text class="hero-copy">选择 READY 烟田与设备，等待设备 ACK 后进入运行。</text><view class="hero-action">开始准备 <text>→</text></view></view>
+    <view class="overview"><view><text class="strong">{{fieldCount}}</text><text>我的烟田</text></view><view><text class="strong">{{deviceCount}}</text><text>绑定设备</text></view><view><text class="strong">{{recent ? (recent.target_count || 0) : 0}}</text><text>最近疑似</text></view></view>
+  </block>
+  <view class="section-head"><text>快捷操作</text><text wx:if="{{partialError}}">{{partialError}}</text></view>
+  <view class="quick-grid"><view bindtap="scanCode"><text class="icon">⌗</text><text class="strong">扫码绑定</text><text>设备 / Web 登录</text></view><view bindtap="goMission"><text class="icon">↗</text><text class="strong">开始巡检</text><text>烟田与设备向导</text></view><view bindtap="goFields"><text class="icon">⌁</text><text class="strong">烟田管理</text><text>底图与风险空间</text></view><view bindtap="goRecords"><text class="icon">≋</text><text class="strong">巡检记录</text><text>{{riskText}}</text></view></view>
+  <view class="devices-link" bindtap="goDevices"><view><text class="strong">设备状态</text><text>查看在线、GPS、相机与同步状态</text></view><text>›</text></view>
+</view>

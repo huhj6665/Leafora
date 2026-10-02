@@ -1,0 +1,17 @@
+# Generated into Web/local/mosquitto/mosquitto.conf by initialize_mosquitto.ps1.
+# The password file contains hashes only; plaintext credentials stay in local .env files.
+listener {{LISTEN_PORT}} 0.0.0.0
+protocol mqtt
+allow_anonymous false
+password_file {{PASSWORD_FILE}}
+
+persistence true
+persistence_location {{PERSISTENCE_DIR}}/
+autosave_interval 60
+
+log_dest file {{LOG_FILE}}
+log_type error
+log_type warning
+log_type notice
+log_type information
+connection_messages true

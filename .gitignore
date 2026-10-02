@@ -1,0 +1,79 @@
+# Secrets and machine-local configuration
+**/.env
+**/.env.*
+!**/.env.example
+**/device.env
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+
+# Python
+**/.venv/
+**/venv/
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+*.db
+*.sqlite
+*.sqlite3
+
+# Node / frontend build output
+**/node_modules/
+Web/frontend/dist/
+*.tsbuildinfo
+Web/frontend/vite.config.js
+Web/frontend/vite.config.d.ts
+
+# Runtime data and generated media
+Web/backend/storage/
+Web/model_service/outputs/
+Web/model_service/test_images/
+Web/scripts/mock_jetson/outputs/
+Web/scripts/mock_jetson/test_images/
+Web/scripts/mock_jetson/images/
+TLD_project/data/cache/
+TLD_project/runtime/
+Web/local/
+Web/scripts/mock_jetson/local/
+
+# AI model binaries are provisioned separately
+TLD_project/models/*.engine
+TLD_project/models/*.onnx
+Web/model_service/weights/*.pt
+*.pth
+*.plan
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+~$*
+
+# Editors and local agent state
+**/.idea/
+**/.vscode/
+**/.claude/
+**/.codex/
+**/project.private.config.json
+
+# Development instructions, private handoffs and design experiments
+AGENTS.md
+prompts/
+**/PROJECT_STATUS.md
+docs/PROJECT_COORDINATION.md
+docs/design/
+Web/docs/*HANDOFF.md
+Web/docs/*REPORT.md
+Web/frontend/src/assets/brand-explorations/
+weixinapp/test/ui-preview/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
